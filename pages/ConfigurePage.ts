@@ -3,12 +3,12 @@ import { Config } from "../utils/Config";
 import { expect } from "@playwright/test";
 
 export class ConfigurePage extends BasePage {
+
   config = Config.getInstance();
   private ipInput = "input[name='customfield[11]']";
   private continueButton = "//button[normalize-space()='Continue']";
   private addonButton = "div.icheckbox_square-blue";
-  private priceLocator =
-    "//span[contains(text(), '+ Monthly CloudLinux')]/following-sibling::span[contains(@class, 'pull-right')]";
+  private priceLocator = "//span[contains(text(), '+ Monthly CloudLinux')]/following-sibling::span[contains(@class, 'pull-right')]";
 
   async enterIp(ip: string) {
     await this.type(this.ipInput, ip);
@@ -34,7 +34,6 @@ export class ConfigurePage extends BasePage {
     const button = this.page.locator(this.continueButton);
     await this.enterIp(this.config.testIp);
     await button.dblclick({ force: true });
-    await button.waitFor({ state: "visible" });
     await this.page.waitForFunction(
       (el) => el && !el.hasAttribute("disabled"),
       await button.elementHandle(),
