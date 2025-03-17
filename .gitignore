@@ -1,0 +1,15 @@
+.idea/
+.vscode/
+node_modules/
+dist/
+playwright-report/
+test-results/
+allure-results/
+allure-report/
+.env
+*.log
+*.tmp
+output/
+*.cache
+coverage/
+*.tsbuildinfo
